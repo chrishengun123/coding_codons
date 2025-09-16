@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg441wigecnft"]
+
+[ext_resource type="Script" path="res://letter.gd" id="1_mx1b6"]
+[ext_resource type="Texture2D" uid="uid://m50nvxuishs8" path="res://codon table.png" id="2_in7vp"]
+
+[sub_resource type="Theme" id="Theme_cg54i"]
+MarginContainer/constants/margin_bottom = 32
+MarginContainer/constants/margin_left = 32
+MarginContainer/constants/margin_right = 32
+MarginContainer/constants/margin_top = 32
+
+[node name="letter" type="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 64.0
+offset_bottom = 64.0
+theme = SubResource("Theme_cg54i")
+script = ExtResource("1_mx1b6")
+
+[node name="G" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("2_in7vp")
+region_enabled = true
+region_rect = Rect2(364, 356, 64, 64)
+
+[node name="U" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("2_in7vp")
+region_enabled = true
+region_rect = Rect2(484, 356, 64, 64)
+
+[node name="A" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("2_in7vp")
+region_enabled = true
+region_rect = Rect2(364, 476, 64, 64)
+
+[node name="C" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("2_in7vp")
+region_enabled = true
+region_rect = Rect2(484, 476, 64, 64)

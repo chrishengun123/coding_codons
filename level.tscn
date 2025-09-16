@@ -1,0 +1,374 @@
+[gd_scene load_steps=20 format=3 uid="uid://bb0em58n4apwo"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_jn3fr"]
+[ext_resource type="Texture2D" uid="uid://m50nvxuishs8" path="res://codon table.png" id="2_a1gb8"]
+[ext_resource type="Script" path="res://codon_table.gd" id="3_uyb84"]
+[ext_resource type="Texture2D" uid="uid://cuwtux8pn7b7l" path="res://clipboard.png" id="4_heq0s"]
+[ext_resource type="AudioStream" uid="uid://brcb862kxqlvm" path="res://Gensokyos_Best_Doctor.mp3" id="5_rxrsb"]
+
+[sub_resource type="Animation" id="Animation_pa7xj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen/times_up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen/darken:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen/clipboard:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 648)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("screen/darken:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s27ru"]
+resource_name = "results"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen/darken:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screen/clipboard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 648), Vector2(320, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen/darken:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xgxkh"]
+resource_name = "times up"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screen/times_up:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9, 1, 1.4, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(256, 648), Vector2(256, 192), Vector2(256, 192), Vector2(256, 256), Vector2(256, 256), Vector2(256, 192), Vector2(256, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_roayh"]
+_data = {
+"RESET": SubResource("Animation_pa7xj"),
+"results": SubResource("Animation_s27ru"),
+"times up": SubResource("Animation_xgxkh")
+}
+
+[sub_resource type="Theme" id="Theme_cnngm"]
+default_font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_d4sep"]
+font_size = 128
+font_color = Color(0, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_0ymdc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.75)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_plmfh"]
+gradient = SubResource("Gradient_0ymdc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq5kk"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gt47m"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eyuo7"]
+font_size = 32
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ohges"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7yfa"]
+font_size = 32
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_pwc3w"]
+fade_time = 0.0
+stream_count = 1
+stream_0 = ExtResource("5_rxrsb")
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_jn3fr")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_roayh")
+}
+
+[node name="screen" type="CanvasLayer" parent="."]
+
+[node name="codon_table" type="TextureRect" parent="screen"]
+offset_left = 1152.0
+offset_right = 2066.0
+offset_bottom = 900.0
+scale = Vector2(0.507659, 0.497778)
+texture = ExtResource("2_a1gb8")
+script = ExtResource("3_uyb84")
+
+[node name="G_button" type="Button" parent="screen"]
+offset_left = 112.0
+offset_top = 512.0
+offset_right = 240.0
+offset_bottom = 640.0
+theme = SubResource("Theme_cnngm")
+text = "G"
+
+[node name="U_button" type="Button" parent="screen"]
+offset_left = 304.0
+offset_top = 512.0
+offset_right = 432.0
+offset_bottom = 640.0
+theme = SubResource("Theme_cnngm")
+text = "U"
+
+[node name="A_button" type="Button" parent="screen"]
+offset_left = 496.0
+offset_top = 512.0
+offset_right = 624.0
+offset_bottom = 640.0
+theme = SubResource("Theme_cnngm")
+text = "A"
+
+[node name="C_button" type="Button" parent="screen"]
+offset_left = 688.0
+offset_top = 512.0
+offset_right = 816.0
+offset_bottom = 640.0
+theme = SubResource("Theme_cnngm")
+text = "C"
+
+[node name="back_button" type="Button" parent="screen"]
+offset_left = 880.0
+offset_top = 512.0
+offset_right = 1033.0
+offset_bottom = 640.0
+theme = SubResource("Theme_cnngm")
+text = "back"
+
+[node name="times_up" type="Label" parent="screen"]
+offset_left = 256.0
+offset_top = 648.0
+offset_right = 896.0
+offset_bottom = 832.0
+text = "Time's up!"
+label_settings = SubResource("LabelSettings_d4sep")
+
+[node name="darken" type="TextureRect" parent="screen"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_plmfh")
+
+[node name="clipboard" type="TextureRect" parent="screen"]
+offset_left = 320.0
+offset_top = 648.0
+offset_right = 576.0
+offset_bottom = 1018.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_heq0s")
+expand_mode = 1
+
+[node name="center" type="HBoxContainer" parent="screen/clipboard"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 352.0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="results" type="VBoxContainer" parent="screen/clipboard/center"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="title" type="Label" parent="screen/clipboard/center/results"]
+layout_mode = 2
+text = "Results"
+label_settings = SubResource("LabelSettings_mq5kk")
+horizontal_alignment = 1
+
+[node name="results" type="Label" parent="screen/clipboard/center/results"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tasks:
+[correct] correct
+[incorrect] incorrect
+[unfinished] not finished
+Accuracy: [accuracy]%"
+label_settings = SubResource("LabelSettings_gt47m")
+horizontal_alignment = 1
+
+[node name="end" type="Button" parent="screen/clipboard/center/results"]
+layout_mode = 2
+text = "Back to menu"
+
+[node name="enter_button" type="Button" parent="."]
+offset_left = 784.0
+offset_top = 8.0
+offset_right = 1008.0
+offset_bottom = 136.0
+theme = SubResource("Theme_cnngm")
+text = "submit"
+
+[node name="quit_button" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 164.0
+offset_bottom = 224.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_cnngm")
+text = "quit"
+
+[node name="confirmation" type="Label" parent="quit_button"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -48.0
+offset_top = 128.0
+offset_right = 176.0
+offset_bottom = 173.0
+text = "are you sure?"
+label_settings = SubResource("LabelSettings_eyuo7")
+horizontal_alignment = 1
+
+[node name="tasks_left" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tasks left:"
+label_settings = SubResource("LabelSettings_ohges")
+
+[node name="time_left" type="Label" parent="."]
+offset_top = 32.0
+offset_right = 155.0
+offset_bottom = 77.0
+text = "Time left:"
+label_settings = SubResource("LabelSettings_ohges")
+
+[node name="codon" type="HFlowContainer" parent="."]
+offset_left = 112.0
+offset_top = 256.0
+offset_right = 1032.0
+offset_bottom = 512.0
+metadata/_edit_lock_ = true
+
+[node name="task" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 112.0
+text = "Task:"
+label_settings = SubResource("LabelSettings_s7yfa")
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="error" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 200.0
+offset_right = 573.0
+offset_bottom = 248.0
+label_settings = SubResource("LabelSettings_ohges")
+metadata/_edit_lock_ = true
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_pwc3w")
+autoplay = true
+
+[node name="time_limit" type="Timer" parent="."]
+one_shot = true
+
+[node name="backspace_cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="show_error" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="quit_misclick" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[connection signal="gui_input" from="screen/codon_table" to="screen/codon_table" method="_on_gui_input"]
+[connection signal="pressed" from="screen/G_button" to="." method="_on_g_button_pressed"]
+[connection signal="pressed" from="screen/U_button" to="." method="_on_u_button_pressed"]
+[connection signal="pressed" from="screen/A_button" to="." method="_on_a_button_pressed"]
+[connection signal="pressed" from="screen/C_button" to="." method="_on_c_button_pressed"]
+[connection signal="pressed" from="screen/back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="screen/clipboard/center/results/end" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="enter_button" to="." method="_on_enter_button_pressed"]
+[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="time_limit" to="." method="_on_time_limit_timeout"]
+[connection signal="timeout" from="show_error" to="." method="_on_show_error_timeout"]
+[connection signal="timeout" from="quit_misclick" to="." method="_on_quit_misclick_timeout"]

@@ -1,0 +1,384 @@
+[gd_scene load_steps=25 format=3 uid="uid://cfp1mubokehqn"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_bc4fx"]
+[ext_resource type="Texture2D" uid="uid://cuwtux8pn7b7l" path="res://clipboard.png" id="2_j0b42"]
+[ext_resource type="Texture2D" uid="uid://cn5xyifo0uwgp" path="res://name tag.png" id="2_k00g1"]
+[ext_resource type="Texture2D" uid="uid://m50nvxuishs8" path="res://codon table.png" id="4_bouxc"]
+[ext_resource type="AudioStream" uid="uid://ba4s2s3xr4i3t" path="res://The_Doctor_Will_See_You_Soon.mp3" id="4_h0bmr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5kn63"]
+font_size = 128
+
+[sub_resource type="Theme" id="Theme_17kqa"]
+default_font_size = 64
+
+[sub_resource type="Theme" id="Theme_x2fm3"]
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="Theme" id="Theme_pckrk"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_sgf13"]
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_focus_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
+Label/colors/font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_xakmq"]
+CheckBox/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_iix03"]
+fade_time = 0.0
+stream_count = 1
+stream_0 = ExtResource("4_h0bmr")
+
+[sub_resource type="Gradient" id="Gradient_pbsa8"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.75)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pyn8w"]
+gradient = SubResource("Gradient_pbsa8")
+
+[sub_resource type="Gradient" id="Gradient_lq5s5"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.5, 0.5, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nqey4"]
+gradient = SubResource("Gradient_lq5s5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3jiw"]
+atlas = ExtResource("4_bouxc")
+region = Rect2(364, 356, 64, 64)
+
+[sub_resource type="Gradient" id="Gradient_rdub7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t4wan"]
+load_path = "res://.godot/imported/codon table.png-ba69decdf84fb185aeee5e740ed906fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67q7g"]
+atlas = SubResource("CompressedTexture2D_t4wan")
+region = Rect2(484, 356, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4lke7"]
+load_path = "res://.godot/imported/codon table.png-ba69decdf84fb185aeee5e740ed906fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8atc"]
+atlas = SubResource("CompressedTexture2D_4lke7")
+region = Rect2(364, 476, 64, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_147xb"]
+load_path = "res://.godot/imported/codon table.png-ba69decdf84fb185aeee5e740ed906fa.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr5y1"]
+atlas = SubResource("CompressedTexture2D_147xb")
+region = Rect2(484, 476, 64, 64)
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_bc4fx")
+metadata/_edit_horizontal_guides_ = [-56.0]
+
+[node name="title" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 175.0
+text = "Coding Codons"
+label_settings = SubResource("LabelSettings_5kn63")
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="credit" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 616.0
+offset_right = 270.0
+offset_bottom = 639.0
+text = "Credits to dairi on Pixiv for the art"
+
+[node name="start" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 368.0
+offset_right = 656.0
+offset_bottom = 464.0
+theme = SubResource("Theme_17kqa")
+text = "Start"
+
+[node name="tips" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 544.0
+offset_right = 672.0
+offset_bottom = 597.0
+theme = SubResource("Theme_17kqa")
+theme_override_font_sizes/font_size = 32
+text = "How to play"
+
+[node name="nametag" type="TextureRect" parent="."]
+offset_left = 432.0
+offset_top = 136.0
+offset_right = 721.0
+offset_bottom = 384.0
+texture = ExtResource("2_k00g1")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="name" type="TextEdit" parent="nametag"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 74.0
+offset_top = 128.0
+offset_right = 232.0
+offset_bottom = 163.0
+theme = SubResource("Theme_x2fm3")
+placeholder_text = "insert name here"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="Label" type="Label" parent="nametag"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 136.0
+offset_right = 74.0
+offset_bottom = 159.0
+theme = SubResource("Theme_x2fm3")
+text = "Dr."
+
+[node name="clipboard" type="TextureRect" parent="."]
+offset_left = 864.0
+offset_top = 192.0
+offset_right = 1088.0
+offset_bottom = 516.0
+texture = ExtResource("2_j0b42")
+expand_mode = 1
+
+[node name="center" type="HBoxContainer" parent="clipboard"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 312.0
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="modes" type="VBoxContainer" parent="clipboard/center"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="tasks" type="HBoxContainer" parent="clipboard/center/modes"]
+layout_mode = 2
+
+[node name="task_label" type="Label" parent="clipboard/center/modes/tasks"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_pckrk")
+text = "Tasks:"
+
+[node name="tasks" type="SpinBox" parent="clipboard/center/modes/tasks"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_x2fm3")
+min_value = 1.0
+value = 5.0
+allow_greater = true
+
+[node name="time" type="HBoxContainer" parent="clipboard/center/modes"]
+layout_mode = 2
+
+[node name="timed" type="CheckBox" parent="clipboard/center/modes/time"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_sgf13")
+text = "Timed"
+
+[node name="time" type="SpinBox" parent="clipboard/center/modes/time"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_xakmq")
+min_value = 1.0
+value = 100.0
+allow_greater = true
+suffix = "s"
+
+[node name="endless" type="CheckBox" parent="clipboard/center/modes"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_sgf13")
+text = "Endless"
+
+[node name="blind" type="CheckBox" parent="clipboard/center/modes"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_sgf13")
+text = "Blind"
+
+[node name="Label" type="Label" parent="clipboard/center/modes"]
+layout_mode = 2
+theme = SubResource("Theme_sgf13")
+text = "Custom Scenarios:"
+
+[node name="insulin" type="CheckBox" parent="clipboard/center/modes"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_sgf13")
+text = "Diabetic Disaster"
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_iix03")
+autoplay = true
+
+[node name="tutorial" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="darken" type="TextureRect" parent="tutorial"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_pyn8w")
+
+[node name="table_background" type="TextureRect" parent="tutorial"]
+offset_left = 344.0
+offset_right = 808.0
+offset_bottom = 456.0
+texture = SubResource("GradientTexture2D_nqey4")
+expand_mode = 1
+
+[node name="codon_table" type="TextureRect" parent="tutorial"]
+offset_left = 344.0
+offset_right = 808.0
+offset_bottom = 456.0
+texture = ExtResource("4_bouxc")
+expand_mode = 1
+
+[node name="G" type="CPUParticles2D" parent="tutorial/codon_table"]
+show_behind_parent = true
+position = Vector2(184, 184)
+emitting = false
+amount = 15
+lifetime = 5.0
+texture = SubResource("AtlasTexture_k3jiw")
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="U" type="CPUParticles2D" parent="tutorial/codon_table"]
+show_behind_parent = true
+position = Vector2(280, 184)
+emitting = false
+amount = 15
+lifetime = 5.0
+texture = SubResource("AtlasTexture_67q7g")
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="A" type="CPUParticles2D" parent="tutorial/codon_table"]
+show_behind_parent = true
+position = Vector2(184, 272)
+emitting = false
+amount = 15
+lifetime = 5.0
+texture = SubResource("AtlasTexture_q8atc")
+direction = Vector2(-1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="C" type="CPUParticles2D" parent="tutorial/codon_table"]
+show_behind_parent = true
+position = Vector2(280, 272)
+emitting = false
+amount = 15
+lifetime = 5.0
+texture = SubResource("AtlasTexture_lr5y1")
+direction = Vector2(1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="codon_table" type="TextureRect" parent="."]
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 384.0
+offset_bottom = 512.0
+texture = ExtResource("4_bouxc")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="G" type="CPUParticles2D" parent="codon_table"]
+show_behind_parent = true
+position = Vector2(128, 128)
+amount = 10
+lifetime = 3.0
+texture = SubResource("AtlasTexture_k3jiw")
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="U" type="CPUParticles2D" parent="codon_table"]
+show_behind_parent = true
+position = Vector2(192, 128)
+amount = 10
+lifetime = 3.0
+texture = SubResource("AtlasTexture_67q7g")
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="A" type="CPUParticles2D" parent="codon_table"]
+show_behind_parent = true
+position = Vector2(128, 192)
+amount = 10
+lifetime = 3.0
+texture = SubResource("AtlasTexture_q8atc")
+direction = Vector2(-1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[node name="C" type="CPUParticles2D" parent="codon_table"]
+show_behind_parent = true
+position = Vector2(192, 192)
+amount = 10
+lifetime = 3.0
+texture = SubResource("AtlasTexture_lr5y1")
+direction = Vector2(1, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_rdub7")
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="tips" to="." method="_on_tips_pressed"]
+[connection signal="pressed" from="clipboard/center/modes/time/timed" to="." method="_on_timed_pressed"]
+[connection signal="pressed" from="clipboard/center/modes/endless" to="." method="_on_endless_pressed"]
+[connection signal="pressed" from="clipboard/center/modes/blind" to="." method="_on_blind_pressed"]
+[connection signal="pressed" from="clipboard/center/modes/insulin" to="." method="_on_insulin_pressed"]

@@ -1,0 +1,93 @@
+~ start
+do act("eirin","eirin idle",Vector2(1352,324),0.1)
+Skip intro?
+- Yes
+	do leave("eirin")
+	=> END
+- No
+do act("eirin","eirin idle",Vector2(952,324),0.1)
+Eirin: Hello [if playername!=""]{{playername}}[else]there[/if].[wait=0.5]\nI'm Eirin Yagokoro[wait=0.5], the doctor of Eientei.
+Eirin: Let me explain the details of your job.
+Eirin: I have created some genetically modified bacteria which produce proteins.
+Eirin: Your job is to give the bacteria instructions on what protein to make.
+if modes.insulin:
+	do act("eirin","eirin talking",Vector2(952,324),0.1)
+	Eirin: Right now[wait=0.5], there's an influx of patiens with type 1 diabetes,[wait=0.5]\nSo you'll have to make insulin.
+	Eirin: It's quite a complex protein[wait=0.5], so [color=yellow]be careful[/color].
+do act("eirin","eirin idle",Vector2(952,324),0.1)
+Eirin: I will send you the list of required amino acids.
+do act("eirin","eirin talking",Vector2(952,324),0.1)
+Eirin: Make sure you make them in the [color=yellow]correct order[/color][wait=0.5],\nAnd don't forget to [color=green]start[/color] and [color=blue]end[/color] the instruction.
+if modes.blind:
+	do act("eirin","eirin nervous",Vector2(952,324),0.1)
+	Eirin: Unfortunately[wait=0.5], the [color=cyan]codon table[/color] is offline, so hopefully you remember it.
+else:
+	do act("eirin","eirin idle",Vector2(952,324),0.1)
+	Eirin: If you forgot the order[wait=0.5], just click on the [color=cyan]codon table[/color].
+if modes.timed:
+	do act("eirin","eirin talking",Vector2(952,324),0.1)
+	Eirin: We are somewhat in a rush[wait=0.5], so please manage your time well.
+[do act("eirin","eirin idle",Vector2(1352,324),0.1)][wait=0.5] [next=auto]
+do leave("eirin")
+=> END
+
+~ finish
+if correct <= 0:
+	=> fired
+do act("eirin","eirin talking",Vector2(1352,324),0.1)
+do act("eirin","eirin talking",Vector2(952,324),0.1)
+Eirin: That's the last one.
+=> results
+=> END
+
+~ results
+Eirin: Let's talk about your results.
+if incorrect <= 0:
+	do act("eirin","eirin happy",Vector2(952,324),0.1)
+	Eirin: Good job[wait=0.5], you got [wave amp=25 freq=5]everything correct![/wave]
+	Eirin: Keep up the good work!
+elif incorrect < correct:
+	do act("eirin","eirin idle",Vector2(952,324),0.1)
+	Eirin: You made some errors[wait=0.5], but overall, you did well.
+else:
+	do act("eirin","eirin talking",Vector2(952,324),0.1)
+	Eirin: You made a lot of mistakes.
+	Eirin: Please improve next time.
+do show_results()
+=> END
+
+~ times_up
+if correct <= 0:
+	=> fired
+do act("eirin","eirin talking",Vector2(1352,324),0.1)
+do act("eirin","eirin talking",Vector2(952,324),0.1)
+Eirin: That's enough for today.
+if modes.endless:
+	do act("eirin","eirin idle",Vector2(952,324),0.1)
+	Eirin: Thank you for the assistance.
+else:
+	Eirin: Please keep track of the time next time.
+=> END
+
+~ fired
+do act("eirin","eirin angry",Vector2(1352,324),0.1)
+do act("eirin","eirin angry",Vector2(952,324),0.1)
+Eirin: That's enough!
+Eirin: What were you doing?
+if correct+incorrect > 0:
+	Eirin: How did you mess up this badly?
+	if correct <= 0:
+		Eirin: Were you even trying?
+else:
+	Eirin: You didn't do a [shake rate=20 level=10]single[/shake] thing!
+Eirin: You had one job!
+Eirin: You're[wait=0.5] [shake rate=20 level=10][color=red]fired[/color][/shake]!
+do show_results()
+=> END
+
+~ tutorial
+This is the [color=cyan]codon table[/color]. You can click it during gameplay to see it.
+It shows the three letters you need to perform each action.
+You read it from middle to edge.\nFor example, GUA creates Val, CCG creates Pro, etc.
+Remember to add a [color=green]start (AUG)[/color] and [color=blue]stop (UAA,UAG,UGA)[/color] to your instructions.
+=> END
